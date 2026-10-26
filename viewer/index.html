@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhotoDepth 3D — Gaussian Splat Viewer</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "./libs/three.module.js",
+            "@mkkellogg/gaussian-splats-3d": "./libs/gaussian-splats-3d.module.js"
+        }
+    }
+    </script>
+</head>
+<body>
+    <div id="viewer-container"></div>
+
+    <header class="overlay-header">
+        <div class="panel title-box">
+            <h1>PhotoDepth 3D</h1>
+            <span class="title-badge">ML-SHARP 3DGS</span>
+        </div>
+        <div class="panel controls-box">
+            <button id="btn-reset" class="btn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+                    <path d="M3 3v5h5"/>
+                </svg>
+                Reset Camera
+            </button>
+            <label for="file-input" class="btn btn-primary" style="cursor: pointer;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                    <polyline points="17 8 12 3 7 8"/>
+                    <line x1="12" y1="3" x2="12" y2="15"/>
+                </svg>
+                Open PLY
+                <input type="file" id="file-input" accept=".ply" style="display: none;">
+            </label>
+        </div>
+    </header>
+
+    <footer class="overlay-footer">
+        <div class="panel status-box">
+            <div id="status-dot" class="status-dot"></div>
+            <span id="status-text">Initializing viewer...</span>
+        </div>
+        <div class="panel help-box">
+            <span class="help-item"><kbd>Left Click + Drag</kbd> Orbit</span>
+            <span class="help-item"><kbd>Right Click + Drag</kbd> Pan</span>
+            <span class="help-item"><kbd>Scroll Wheel</kbd> Zoom</span>
+        </div>
+    </footer>
+
+    <div id="status-modal" class="panel">
+        <div id="modal-spinner" class="spinner"></div>
+        <h2 id="modal-title">Loading 3D Gaussian Splat</h2>
+        <p id="modal-desc">Fetching scene data from local server...</p>
+        <div id="progress-container" class="progress-bar-container">
+            <div id="modal-progress" class="progress-bar"></div>
+        </div>
+        <button id="modal-btn-retry" class="btn btn-primary" style="display: none; margin-top: 10px;">Retry</button>
+    </div>
+
+    <script type="module" src="main.js"></script>
+</body>
+</html>

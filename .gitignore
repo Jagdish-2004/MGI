@@ -1,0 +1,34 @@
+# Virtual Environment
+.venv/
+venv/
+ENV/
+env/
+
+# Model Checkpoint Cache (Multi-gigabyte binary files)
+.cache/
+
+# Python Bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyd
+
+# Node.js dependencies (ESM bundles are self-contained in viewer/libs/)
+node_modules/
+viewer/node_modules/
+
+# Job uploads & Temporary files
+uploads/*
+!uploads/.gitkeep
+test_output/
+
+# User-generated inference models (Preserve sample_teaser.ply baseline)
+outputs/sharp_*
+outputs/*.tmp
+
+# IDE, OS, & logs
+.idea/
+.vscode/
+*.log
+.DS_Store
+Thumbs.db
